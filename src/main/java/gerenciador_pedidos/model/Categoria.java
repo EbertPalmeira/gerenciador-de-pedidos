@@ -4,6 +4,9 @@ package gerenciador_pedidos.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "categoria")
 public class Categoria {
@@ -19,6 +22,11 @@ public class Categoria {
     public Categoria(){
 
     }
+
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    private List<Produto> produtos = new ArrayList<>();
+
+
 
     public Categoria(String nome){
         this.nome = nome;
